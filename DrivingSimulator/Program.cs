@@ -1,13 +1,6 @@
-﻿
-using ClassLibrary.Services;
+﻿using ClassLibrary.Services;
 using DrivingSimulator;
 
-var app = new Application();
+var drivingService = new DrivingService();
+var app = new Application(drivingService);
 app.Run();
-
-    static void Main(string[] args)
-    {
-        IDrivingService carService = new DrivingService();
-        carService.DriveCar();
-    }
-

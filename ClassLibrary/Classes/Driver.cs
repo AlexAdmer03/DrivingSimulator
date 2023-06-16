@@ -9,7 +9,6 @@ namespace ClassLibrary.Classes
     public class Driver
     {
         public string Name { get; set; }
-        public int Fuel { get; set; }
         public int Tiredness { get; set; }
         public int Hunger { get; set; }
 

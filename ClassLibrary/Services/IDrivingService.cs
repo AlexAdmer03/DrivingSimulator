@@ -8,6 +8,14 @@ namespace ClassLibrary.Services
 {
     public interface IDrivingService
     {
-        void DriveCar();
+        void DriveForward();
+        void DriveBackward();
+        void TurnLeft();
+        void TurnRight();
+        void Refuel();
+        void Rest();
+        void DisplayCommands();
+        void DisplayStatus();
+        bool CheckIfDriverIsTooTired();
     }
 }

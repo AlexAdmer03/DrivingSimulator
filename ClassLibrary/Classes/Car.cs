@@ -12,6 +12,12 @@ namespace ClassLibrary.Classes
         public string Direction { get; set; }
         public string AbleToDrive { get; set; }
 
-        public Driver CarDriver { get; set; } = new Driver();
+        public Driver CarDriver { get; set; }
+
+        public Car()
+        {
+            Fuel = 100;
+            CarDriver = new Driver();
+        }
     }
 }
