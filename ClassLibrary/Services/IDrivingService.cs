@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Channels;
 using System.Threading.Tasks;
 
-namespace DrivingSimulator
+namespace ClassLibrary.Services
 {
-    public class Application
+    public interface IDrivingService
     {
-        public void Run()
-        {
-
-        }
+        void DriveCar();
     }
 }
