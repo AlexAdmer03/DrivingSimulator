@@ -2,5 +2,6 @@
 using DrivingSimulator;
 
 var drivingService = new DrivingService();
-var app = new Application(drivingService);
-app.Run();
+var randomUserService = new RandomUserService();
+var app = new Application(drivingService, randomUserService);
+app.Run().GetAwaiter().GetResult();

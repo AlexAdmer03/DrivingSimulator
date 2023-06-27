@@ -17,5 +17,6 @@ namespace ClassLibrary.Services
         void DisplayCommands();
         void DisplayStatus();
         bool CheckIfDriverIsTooTired();
+        bool CheckIfFuelIsEmpty();
     }
 }
