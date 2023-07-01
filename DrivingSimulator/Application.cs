@@ -31,12 +31,13 @@ namespace DrivingSimulator
         public async Task Run()
         {
             string userName = await _randomUserService.GetRandomUserAsync();
-            Console.WriteLine("===========================================");
-            Console.WriteLine("| Välkommen till bilkörningssimuleringen! |");
-            Console.WriteLine($"    Din förare idag är {userName}");
-            Console.WriteLine("|                                         |");
+            
             while (true)
             {
+                Console.WriteLine("===========================================");
+                Console.WriteLine("| Välkommen till bilkörningssimuleringen! |");
+                Console.WriteLine($"    Din förare idag är {userName}");
+                Console.WriteLine("|                                         |");
                 Console.WriteLine("|         1. Starta körning               |\n|         0. Avsluta simulatorn           |");
                 Console.WriteLine("===========================================");
                 var input = Console.ReadLine();
@@ -75,13 +76,13 @@ namespace DrivingSimulator
                     switch (input)
                     {
                         case "1":
-                            continue;
+                            break;
                         case "0":
                             Console.WriteLine("Avslutar Simulation");
                             return;
                         default:
                             Console.WriteLine("Ogiltigt val, försök igen.");
-                            break;
+                            continue;
                     }
                 }
 

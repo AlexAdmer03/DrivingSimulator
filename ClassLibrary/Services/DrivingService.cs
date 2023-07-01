@@ -150,6 +150,12 @@ namespace ClassLibrary.Services
             return false;
         }
 
+        public string GetDirection()
+        {
+            return _direction.ToString();
+        }
+
+
         private bool CheckIfDriverIsTired()
         {
             if (_car.CarDriver.Tiredness >= 80)
@@ -160,6 +166,7 @@ namespace ClassLibrary.Services
         }
 
         public bool CheckIfDriverIsTooTired()
+        
         {
             if (_car.CarDriver.Tiredness >= 100)
             {
