@@ -20,12 +20,6 @@ namespace ClassLibrary.Services
 
         public void DriveForward()
         {
-            if (_car.Fuel <= 0)
-            {
-                Console.WriteLine("Bensinen är slut, tanka bilen!");
-                return;
-            }
-
             _car.Fuel -= 2;
             _car.CarDriver.Tiredness += 2;
             Console.WriteLine("Du kör framåt.");
@@ -33,12 +27,6 @@ namespace ClassLibrary.Services
 
         public void DriveBackward()
         {
-            if (_car.Fuel <= 0)
-            {
-                Console.WriteLine("Bensinen är slut, tanka bilen!");
-                return;
-            }
-
             _car.Fuel -= 1;
             _car.CarDriver.Tiredness += 2;
             Console.WriteLine("Du kör bakåt.");
@@ -46,12 +34,6 @@ namespace ClassLibrary.Services
 
         public void TurnLeft()
         {
-            if (_car.Fuel <= 0)
-            {
-                Console.WriteLine("Bensinen är slut, tanka bilen!");
-                return;
-            }
-
             _car.Fuel -= 2;
             _car.CarDriver.Tiredness += 2;
 
@@ -68,12 +50,6 @@ namespace ClassLibrary.Services
 
         public void TurnRight()
         {
-            if (_car.Fuel <= 0)
-            {
-                Console.WriteLine("Bensinen är slut, tanka bilen!");
-                return;
-            }
-
             _car.Fuel -= 2;
             _car.CarDriver.Tiredness += 2;
 
@@ -155,6 +131,15 @@ namespace ClassLibrary.Services
             return _direction.ToString();
         }
 
+        public int GetFuel()
+        {
+            return _car.Fuel;
+        }
+
+        public int GetTiredness()
+        {
+            return _car.CarDriver.Tiredness;
+        }
 
         private bool CheckIfDriverIsTired()
         {

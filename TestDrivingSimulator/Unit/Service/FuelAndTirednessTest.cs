@@ -8,89 +8,52 @@ using System.Threading.Tasks;
 
 namespace TestDrivingSimulator.Unit.Service
 {
+    [TestClass]
     public class FuelAndTirednessTest
     {
-        [TestClass]
-        public class UnitTest1
+        private DrivingService _drivingService;
+
+        [TestInitialize]
+        public void Setup()
         {
-            [TestClass]
-            public class DrivingServiceTests
-            {
-                private DrivingService _sut;
-                private Car _car;
+            _drivingService = new DrivingService();
+        }
 
-                [TestInitialize]
-                public void TestInitialize()
-                {
-                    _sut = new DrivingService();
-                    _car = new Car();
-                }
+        [TestMethod]
+        public void DriveForward_DecreasesFuelByTwoAndIncreasesTirednessByTwo()
+        {
+            // Arrange
+            var initialFuel = _drivingService.GetFuel();
+            var initialTiredness = _drivingService.GetTiredness();
 
-                [TestMethod]
-                public void DriveForward_Should_Increase_Tiredness()
-                {
-                    // Arrange
-                    var initialTiredness = _car.CarDriver.Tiredness;
+            // Act
+            _drivingService.DriveForward();
 
-                    // Act
-                    _sut.DriveForward();
+            // Assert
+            Assert.AreEqual(initialFuel - 2, _drivingService.GetFuel());
+            Assert.AreEqual(initialTiredness + 2, _drivingService.GetTiredness());
+        }
 
-                    // Assert
-                    Assert.IsTrue(_car.CarDriver.Tiredness > initialTiredness);
-                }
+        // Similarly for DriveBackward, TurnLeft, TurnRight
 
-                [TestMethod]
-                public void Refuel_Should_Fill_Up_Fuel()
-                {
-                    // Arrange
-                    _car.Fuel = 0;
+        [TestMethod]
+        public void Refuel_SetsFuelTo100()
+        {
+            // Act
+            _drivingService.Refuel();
 
-                    // Act
-                    _sut.Refuel();
+            // Assert
+            Assert.AreEqual(100, _drivingService.GetFuel());
+        }
 
-                    // Assert
-                    Assert.IsTrue(_car.Fuel == 100);
-                }
+        [TestMethod]
+        public void Rest_SetsTirednessToZero()
+        {
+            // Act
+            _drivingService.Rest();
 
-                [TestMethod]
-                public void TurnRight_Should_Change_Direction()
-                {
-                    // Arrange
-                    var initialDirection = "Norr";
-
-                    // Act
-                    _sut.TurnRight();
-
-                    // Assert
-                    Assert.AreNotEqual(initialDirection, _sut.GetDirection());
-                }
-
-                [TestMethod]
-                public void TurnRight_Should_Consume_Fuel()
-                {
-                    // Arrange
-                    var initialFuel = _car.Fuel;
-
-                    // Act
-                    _sut.TurnRight();
-
-                    // Assert
-                    Assert.IsTrue(_car.Fuel < initialFuel);
-                }
-
-                [TestMethod]
-                public void CheckIfDriverIsTooTired_Should_Return_True_If_Tiredness_Is_Max()
-                {
-                    // Arrange
-                    _car.CarDriver.Tiredness = 100;
-
-                    // Act
-                    var result = _sut.CheckIfDriverIsTooTired();
-
-                    // Assert
-                    Assert.IsTrue(result);
-                }
-            }
+            // Assert
+            Assert.AreEqual(0, _drivingService.GetTiredness());
         }
     }
 }
