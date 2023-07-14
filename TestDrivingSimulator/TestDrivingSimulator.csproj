@@ -20,8 +20,4 @@
     <ProjectReference Include="..\DrivingSimulator\DrivingSimulator.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Unit\Models\" />
-  </ItemGroup>
-
 </Project>

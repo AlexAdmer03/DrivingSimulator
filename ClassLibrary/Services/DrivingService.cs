@@ -27,7 +27,7 @@ namespace ClassLibrary.Services
 
         public void DriveBackward()
         {
-            _car.Fuel -= 1;
+            _car.Fuel -= 2;
             _car.CarDriver.Tiredness += 2;
             Console.WriteLine("Du kör bakåt.");
         }
@@ -117,7 +117,7 @@ namespace ClassLibrary.Services
         }
 
 
-        private bool CheckIfFuelIsLow()
+        public bool CheckIfFuelIsLow()
         {
             if (_car.Fuel <= 20)
             {
