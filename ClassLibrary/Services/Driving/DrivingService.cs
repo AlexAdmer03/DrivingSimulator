@@ -7,14 +7,19 @@ using ClassLibrary.Classes;
 using System;
 using System.Threading;
 
-namespace ClassLibrary.Services
+namespace ClassLibrary.Services.Driving
 {
 
 
     public class DrivingService : IDrivingService
     {
-        private Car _car = new Car();
+        private Classes.Car _car = new Classes.Car();
         private Direction _direction = Direction.Norr;
+
+        public DrivingService(Classes.Car car)
+        {
+            _car = car;
+        }
 
         enum Direction { Norr, Syd, Öst, Väst }
 
@@ -64,25 +69,6 @@ namespace ClassLibrary.Services
             Console.WriteLine("Du svänger till höger.");
         }
 
-        public void Refuel()
-        {
-            Console.WriteLine("Tankar Bilen...");
-            Thread.Sleep(3000);
-            _car.Fuel = 100;
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Du har tankat bilen.");
-            Console.ResetColor();
-        }
-
-        public void Rest()
-        {
-            Console.WriteLine("Föraren Vilar...");
-            Thread.Sleep(3000);
-            _car.CarDriver.Tiredness = Math.Max(0, _car.CarDriver.Tiredness = 0);
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Du har vilat och minskat tröttheten.");
-            Console.ResetColor();
-        }
 
         public void DisplayCommands()
         {
@@ -150,29 +136,6 @@ namespace ClassLibrary.Services
             return false;
         }
 
-        public bool CheckIfDriverIsTooTired()
-        
-        {
-            if (_car.CarDriver.Tiredness >= 100)
-            {
-                Console.Clear();
-                Console.WriteLine("Du är för trött och kan inte köra längre. Du blev bärgad till ett hotell för att vila.");
-                Rest();
-                return true;
-            }
-            return false;
-        }
 
-        public bool CheckIfFuelIsEmpty()
-        {
-            if (_car.Fuel <= 0)
-            {
-                Console.Clear();
-                Console.WriteLine("Bensinen är slut, du kan inte köra längre. Du blev bärgad till närmaste bensinmack.");
-                Refuel();
-                return true;
-            }
-            return false;
-        }
     }
 }

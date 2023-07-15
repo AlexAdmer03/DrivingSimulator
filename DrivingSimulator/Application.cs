@@ -4,24 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
-using ClassLibrary.Services;
 using System.Net.Http;
 using System.Threading.Tasks;
+using ClassLibrary.Services.Car;
+using ClassLibrary.Services.Driver;
 using Newtonsoft.Json.Linq;
 
 namespace DrivingSimulator
 {
     using ClassLibrary.Services;
+    using ClassLibrary.Services.Driving;
     using System;
     using System.Xml.Linq;
 
     public class Application
     {
+        private readonly IDriverService _driverService;
+        private readonly ICarService _carService;
         private readonly IDrivingService _drivingService;
         private readonly ErrorService _errorService;
         private readonly RandomUserService _randomUserService;
-        public Application(IDrivingService drivingService, RandomUserService randomUserService)
+        public Application(IDrivingService drivingService, RandomUserService randomUserService, ICarService carService, IDriverService driverService)
         {
+            _driverService = driverService;
+            _carService = carService;
             _drivingService = drivingService;
             _errorService = new ErrorService();
             _randomUserService = randomUserService;
@@ -68,7 +74,7 @@ namespace DrivingSimulator
             {
                 var input = Console.ReadLine().ToUpper();
 
-                if (_drivingService.CheckIfDriverIsTooTired() || _drivingService.CheckIfFuelIsEmpty())
+                if (_driverService.CheckIfDriverIsTooTired() || _carService.CheckIfFuelIsEmpty())
                 {
                     Console.WriteLine("1. Fortsätt köra\n0. Avsluta simulator");
                     input = Console.ReadLine();
@@ -106,11 +112,11 @@ namespace DrivingSimulator
                         break;
                     case "R":
                         Console.Clear();
-                        _drivingService.Refuel();
+                        _carService.Refuel();
                         break;
                     case "F":
                         Console.Clear();
-                        _drivingService.Rest();
+                        _driverService.Rest();
                         break;
                     default:
                         _errorService.ShowInvalidCommandError();

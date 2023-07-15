@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.Services
+namespace ClassLibrary.Services.Driving
 {
     public interface IDrivingService
     {
@@ -12,11 +12,7 @@ namespace ClassLibrary.Services
         void DriveBackward();
         void TurnLeft();
         void TurnRight();
-        void Refuel();
-        void Rest();
         void DisplayCommands();
         void DisplayStatus();
-        bool CheckIfDriverIsTooTired();
-        bool CheckIfFuelIsEmpty();
     }
 }
