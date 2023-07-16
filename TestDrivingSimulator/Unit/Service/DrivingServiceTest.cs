@@ -68,9 +68,6 @@ namespace TestDrivingSimulator.Unit.Service
             Assert.AreEqual("Syd", newDirection);
         }
 
-        //MENU TESTs
-
-
 
     }
 
