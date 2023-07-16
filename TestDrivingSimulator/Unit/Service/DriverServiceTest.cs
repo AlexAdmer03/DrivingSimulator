@@ -10,6 +10,7 @@ using ClassLibrary.Services.Driver;
 
 namespace TestDrivingSimulator.Unit.Service
 {
+    [TestClass]
     public class DriverServiceTest
     {
         private ICarService _carService;
@@ -22,20 +23,23 @@ namespace TestDrivingSimulator.Unit.Service
         {
             _car = new Car();
             _drivingService = new DrivingService(_car);
+            _driverService = new DriverService(_car);
         }
 
         [TestMethod]
         public void Rest_SetsTirednessToZero()
         {
-            //Arrange
+            // Arrange
             var expectedTiredness = 0;
+            _car.CarDriver.Tiredness = 50; 
 
             // Act
             _driverService.Rest();
 
             // Assert
-            Assert.AreEqual(expectedTiredness, _drivingService.GetTiredness());
+            Assert.AreEqual(expectedTiredness, _car.CarDriver.Tiredness);
         }
+
 
         [TestMethod]
         public void TurnRight_IncresesTidernessByTwo()

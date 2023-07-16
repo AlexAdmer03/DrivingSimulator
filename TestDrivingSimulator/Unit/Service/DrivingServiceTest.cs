@@ -24,7 +24,52 @@ namespace TestDrivingSimulator.Unit.Service
             _drivingService = new DrivingService(_car);
         }
 
-        
+        [TestMethod]
+        public void TurnRight_ChangesDirectionCorrectly()
+        {
+            // Arrange
+            var initialDirection = _drivingService.GetDirection();
+            Assert.AreEqual("Norr", initialDirection);
+
+            // Act
+            _drivingService.TurnRight();
+
+            // Assert
+            var newDirection = _drivingService.GetDirection();
+            Assert.AreEqual("Öst", newDirection);
+
+            // Act
+            _drivingService.TurnRight();
+
+            // Assert
+            newDirection = _drivingService.GetDirection();
+            Assert.AreEqual("Syd", newDirection);
+        }
+
+        [TestMethod]
+        public void TurnLeft_ChangesDirectionCorrectly()
+        {
+            // Arrange
+            var initialDirection = _drivingService.GetDirection();
+            Assert.AreEqual("Norr", initialDirection);
+
+            // Act
+            _drivingService.TurnLeft();
+
+            // Assert
+            var newDirection = _drivingService.GetDirection();
+            Assert.AreEqual("Väst", newDirection);
+
+            // Act
+            _drivingService.TurnLeft();
+
+            // Assert
+            newDirection = _drivingService.GetDirection();
+            Assert.AreEqual("Syd", newDirection);
+        }
+
+        //MENU TESTs
+
 
 
     }
