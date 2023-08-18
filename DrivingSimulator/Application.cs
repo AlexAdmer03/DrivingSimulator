@@ -118,6 +118,9 @@ namespace DrivingSimulator
                         Console.Clear();
                         _driverService.Rest();
                         break;
+                    case "0":
+                        Console.WriteLine("Avslutar Simulation");
+                        return;
                     default:
                         _errorService.ShowInvalidCommandError();
                         break;

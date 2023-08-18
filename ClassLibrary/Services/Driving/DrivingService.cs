@@ -72,15 +72,16 @@ namespace ClassLibrary.Services.Driving
 
         public void DisplayCommands()
         {
-            Console.WriteLine("=====================");
-            Console.WriteLine("| Ange ett kommando:|");
-            Console.WriteLine("| W = Kör framåt    |");
-            Console.WriteLine("| S = Kör bakåt     |");
-            Console.WriteLine("| A = Sväng vänster |");
-            Console.WriteLine("| D = Sväng höger   |");
-            Console.WriteLine("| R = Tanka bilen   |");
-            Console.WriteLine("| F = Vila          |");
-            Console.WriteLine("=====================");
+            Console.WriteLine("=========================");
+            Console.WriteLine("| Ange ett kommando:    |");
+            Console.WriteLine("| W = Kör framåt        |");
+            Console.WriteLine("| S = Kör bakåt         |");
+            Console.WriteLine("| A = Sväng vänster     |");
+            Console.WriteLine("| D = Sväng höger       |");
+            Console.WriteLine("| R = Tanka bilen       |");
+            Console.WriteLine("| F = Vila              |");
+            Console.WriteLine("| 0 = Avsluta simulation|");
+            Console.WriteLine("=========================");
         }
 
         public void DisplayStatus()
